@@ -6,6 +6,7 @@ const dateFormat = (date) => new Intl.DateTimeFormat('fr-FR', dateOptions).forma
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("site/assets");
+  eleventyConfig.addPassthroughCopy("site/favicon.ico");
 
   eleventyConfig.addShortcode(
     "liste",
