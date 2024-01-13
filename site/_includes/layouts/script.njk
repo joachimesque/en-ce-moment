@@ -1,6 +1,8 @@
 const liste = [
 {%- for post in collections.all %}
   {
+    emoji: "{{ post.data.emoji }}",
+    couleur: "{{ post.data.couleur }}",
     adresse: "{{ post.data.adresse }}",
     titre: "{{ post.data.titre }}",
     date: {{ post.date.getTime() }},

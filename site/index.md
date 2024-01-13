@@ -28,6 +28,8 @@ Le contenu du fichier suivre la structure suivante :
 
 ```
 ---
+emoji: <un emoji au choix>
+couleur: <une nuance de couleur (1)>
 adresse: <url de la page En ce moment>
 titre: <titre de la page>
 update: <date de la dernière mise à jour, au format année-mois-jour>
@@ -38,13 +40,19 @@ Par exemple :
 
 ```
 ---
+emoji: 🪴
+couleur: 200
 adresse: https://blog.professeurjoachim.com/en-ce-moment
-titre: 🪴 En ce moment — blog.professeurjoachim.com
+titre: En ce moment — le carnet de Joachim
 update: 2024-01-13
 ---
 ```
 
 Une fois ce fichier édité, il faut ouvrir une Pull Request, que je vérifierai puis mergerai. Évidemment, il n’est pas permis de modifier sans permission les fichiers d’autres sites que le sien.
+
+#### Notes
+
+1. La nuance de couleur se note en degrés, de `0` à `360`, en fonction de sa position sur la roue des couleurs. Pour trouver une nuance, l’outil <https://paletton.com> peut être utile (voir la valeur de `hue`).
 
 ## Webring
 

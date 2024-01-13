@@ -74,6 +74,14 @@ textarea:not([rows]) {
 }
 
 /* ------------------------------------------------------------------------- */
+/* Globals */
+/* ------------------------------------------------------------------------- */
+
+:root {
+  --transition: 0.2s ease;
+}
+
+/* ------------------------------------------------------------------------- */
 /* Utilities */
 /* ------------------------------------------------------------------------- */
 
@@ -184,11 +192,39 @@ section.liste {
   gap: 1.5rem;
 
   article {
+    --emoji-size: 3rem;
+
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     justify-content: end;
+    padding-top: calc(var(--emoji-size) + 0.5rem);
+
+    &::before {
+      content: "";
+      display: block;
+      width: calc(var(--circle-size, 1.4) * var(--emoji-size));
+      height: calc(var(--circle-size, 1.4) * var(--emoji-size));
+      position: absolute;
+      transform: translate(-50%, -50%);
+      inset-block-start: calc(var(--emoji-size) / 2);
+      inset-inline-start: calc(var(--emoji-size) / 2);
+      background-color: hsl(var(--hue, 0deg), 80%, 90%);
+      z-index: -1;
+      opacity: 0.5;
+      border-radius: calc(1.4 * var(--emoji-size));
+      transition:
+        width var(--transition),
+        height var(--transition),
+        opacity var(--transition);
+    }
+
+    &:has(a:is(:hover, :focus, :active))::before {
+      --circle-size: 2;
+
+      opacity: 1;
+    }
 
     h3, p {
       margin: 0;
@@ -199,6 +235,16 @@ section.liste {
       position: absolute;
       inset-block: 0;
       inset-inline: 0;
+    }
+
+    .emoji {
+      display: block;
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      font-size: var(--emoji-size);
+      line-height: 1;
+      height: var(--emoji-size);
     }
   }
 }

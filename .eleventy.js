@@ -14,13 +14,14 @@ module.exports = function(eleventyConfig) {
       return `<section class="liste">
 ${collection.map(item => {
   return `
-  <article>
+  <article style="--hue: ${ item.data.couleur ?? '0' }deg;">
     <h3>${ item.data.titre }</h3>
     <p>
       <span class="text-underline">${ item.data.adresse.replace(/^https?:\/\//, '') }</span><br>
       <small>Ajouté le ${ dateFormat(item.date) }</small><br>
       <small>Mis à jour le ${ dateFormat(item.data.update) }</small>
     </p>
+    <span aria-hidden class="emoji">${ item.data.emoji }</span>
     <a href="${ item.data.adresse }" rel="nofollow">
       <span class="sr-only">Visiter ${ item.data.adresse.replace(/^https?:\/\//, '') }</span>
     </a>
