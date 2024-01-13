@@ -4,6 +4,15 @@ const dateOptions = {
 };
 const dateFormat = (date) => new Intl.DateTimeFormat('fr-FR', dateOptions).format(date);
 
+const shuffle = (array) => { 
+  // https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/
+  for (let i = array.length - 1; i > 0; i--) { 
+    const j = Math.floor(Math.random() * (i + 1)); 
+    [array[i], array[j]] = [array[j], array[i]]; 
+  } 
+  return array; 
+}; 
+
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("site/assets");
   eleventyConfig.addPassthroughCopy("site/favicon.ico");
@@ -11,8 +20,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addShortcode(
     "liste",
     (collection) => {
+      const shuffled_collection = shuffle(collection);
       return `<section class="liste">
-${collection.map(item => {
+${shuffled_collection.map(item => {
   return `
   <article style="--hue: ${ item.data.couleur ?? '0' }deg;">
     <h3>${ item.data.titre }</h3>
