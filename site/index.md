@@ -58,4 +58,6 @@ Une fois ce fichier édité, il faut ouvrir une Pull Request, que je vérifierai
 
 À venir.
 
+![Image marquée “Under construction” (« travaux en cours »)](assets/img/under-construction.gif)
+
 Comme dans les années 90, un petit bout de script JS sera disponible pour chaque membre de la liste, qui affichera des liens vers cette page, vers les pages précédentes et suivantes de la liste, et une page au hasard.
