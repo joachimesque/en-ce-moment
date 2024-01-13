@@ -152,21 +152,30 @@ body {
   gap: 3rem;
   margin: 0;
   padding-inline: clamp(1rem, 5vw, 3rem);
-  max-width: 80rem;
 
   main {
     flex: 1 0 auto;
+
+    > :not(section.liste) {
+      max-width: 90ch;
+    }
   }
 }
 
 footer {
   padding-block-start: 2rem;
+  padding-block-end: 0.5rem;
   border-block-start: 1px solid #999;
 }
 
 /* ------------------------------------------------------------------------- */
 /* Components */
 /* ------------------------------------------------------------------------- */
+
+pre {
+  background-color: #f3f3f3;
+  padding-inline: 0.5em;
+}
 
 section.liste {
   margin-block: 1.5rem;
