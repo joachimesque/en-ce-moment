@@ -22,7 +22,7 @@ L’ajout de ta page “En ce moment” dans la liste peut se faire via GitHub, 
 
 ### GitHub
 
-Pour contribuer une nouvelle adresse, il faut créer un fichier dans `site/links`. Ce fichier doit avoir un nom unique, je recommande le domaine ou sous-domaine du lien, et avoir pour extension `.md`.
+Pour contribuer une nouvelle adresse, il faut créer un fichier dans `site/links`, par exemple <a href="https://github.com/joachimesque/en-ce-moment/new/main/site/links" rel="nofollow noopener noreferer">en suivant ce lien</a>. Ce fichier doit avoir un nom unique, je recommande le domaine ou sous-domaine du lien, et avoir pour extension `.md`.
 
 Le contenu du fichier suivre la structure suivante :
 
