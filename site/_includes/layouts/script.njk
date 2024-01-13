@@ -1,0 +1,10 @@
+const liste = [
+{%- for post in collections.all %}
+  {
+    adresse: "{{ post.data.adresse }}",
+    titre: "{{ post.data.titre }}",
+    date: {{ post.date.getTime() }},
+    update: {{ post.data.update.getTime() }},
+  },
+{%- endfor %}
+];
