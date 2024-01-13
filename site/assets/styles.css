@@ -183,13 +183,22 @@ footer {
 pre {
   background-color: #f3f3f3;
   padding-inline: 0.5em;
+  overflow: scroll;
 }
 
 section.liste {
   margin-block: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  gap: 1.5rem;
+  gap: 2rem 1.5rem;
+
+  @media (width < 700px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (width >= 700px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
 
   article {
     --emoji-size: 3rem;
