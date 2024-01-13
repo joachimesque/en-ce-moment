@@ -1,0 +1,196 @@
+/* https://piccalil.li/blog/a-more-modern-css-reset/ */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* ------------------------------------------------------------------------- */
+/* Utilities */
+/* ------------------------------------------------------------------------- */
+
+.sr-only {
+  border: 0                      !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%)          !important;
+  height: 1px                    !important;
+  overflow: hidden               !important;
+  padding: 0                     !important;
+  position: absolute             !important;
+  width: 1px                     !important;
+  white-space: nowrap            !important;
+}
+
+.text-underline {
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+}
+
+/* ------------------------------------------------------------------------- */
+/* Typography */
+/* ------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Sono';
+  font-style: normal;
+  font-weight: 200 800;
+  src: url('fonts/Trispace.woff2') format("woff2-variations");
+  font-display: swap;
+}
+
+body {
+  font-family: "Sono", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 90;
+}
+
+h1 {
+  font-variation-settings: "wdth" 120;
+}
+
+h2 {
+  margin-block-start: 3rem;
+  font-variation-settings: "wdth" 110;
+}
+
+h3 {
+  font-variation-settings: "wdth" 100;
+}
+
+h4 {
+  font-variation-settings: "wdth" 90;
+}
+
+strong {
+  font-variation-settings: "wdth" 95;
+  font-weight: 600;
+}
+
+footer {
+  font-weight: 300;
+  font-variation-settings: "wdth" 100;
+  font-size: 0.8rem;
+}
+
+/* ------------------------------------------------------------------------- */
+/* Layout */
+/* ------------------------------------------------------------------------- */
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin: 0;
+  padding-inline: clamp(1rem, 5vw, 3rem);
+  max-width: 80rem;
+
+  main {
+    flex: 1 0 auto;
+  }
+}
+
+footer {
+  padding-block-start: 2rem;
+  border-block-start: 1px solid #999;
+}
+
+/* ------------------------------------------------------------------------- */
+/* Components */
+/* ------------------------------------------------------------------------- */
+
+section.liste {
+  margin-block: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 1.5rem;
+
+  article {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: end;
+
+    h3, p {
+      margin: 0;
+    }
+
+    a {
+      display: block;
+      position: absolute;
+      inset-block: 0;
+      inset-inline: 0;
+    }
+  }
+}
+
