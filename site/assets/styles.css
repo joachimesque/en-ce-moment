@@ -195,7 +195,7 @@ section.liste {
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   }
 
-  article {
+  & article {
     --emoji-size: 3rem;
 
     position: relative;
@@ -230,18 +230,18 @@ section.liste {
       opacity: 1;
     }
 
-    h3, p {
+    & h3, & p {
       margin: 0;
     }
 
-    a {
+    & a {
       display: block;
       position: absolute;
       inset-block: 0;
       inset-inline: 0;
     }
 
-    .adresse {
+    & .adresse {
       display: block;
       max-width: 100%;
       overflow: hidden;
@@ -251,7 +251,7 @@ section.liste {
       text-decoration-skip-ink: auto;
     }
 
-    .emoji {
+    & .emoji {
       display: block;
       position: absolute;
       inset-block-start: 0;
