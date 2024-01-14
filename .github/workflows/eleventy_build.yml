@@ -22,4 +22,6 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: _site/
+          local-dir: ./_site/
+          state-name: ./.sync-state.json
+          log-level: verbose
