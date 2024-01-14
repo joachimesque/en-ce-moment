@@ -61,8 +61,8 @@ Comme dans les années 90 un petit bout de script JS est disponible pour les mem
 Il faut charger sur ta page le script hébergé sur ce serveur, et poser la balise `<now-webring>` qui affichera les liens à l’aide du script. Il est possible de poser la balise de chargement du script à un autre endroit de la page (ça dépend de ce que ton CMS te propose).
 
 ```html
-<script type="text/javascript" src="http://localhost:8080/script.js"></script>
-<now-webring><a href="http://localhost:8080">Découvrez le Webring “En ce moment”</a></now-webring>
+<script type="text/javascript" src="https://encemoment.site/script.js"></script>
+<now-webring><a href="https://encemoment.site">Découvrez le Webring “En ce moment”</a></now-webring>
 ```
 
 Il n’est pas recommandé de copier le contenu du `script.js` pour l’exécuter sur la page même, mais ça peut  se faire si vous avez des soucis d’autorisation (par exemple avec les CORS). En revanche sa liste ne sera pas à jour.

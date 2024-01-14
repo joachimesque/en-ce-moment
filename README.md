@@ -2,7 +2,7 @@
 
 **Répertoire francophone de “now pages”, ou pages “En ce moment”**
 
-<https://joachimesque.github.io/en-ce-moment/>
+<https://encemoment.site/>
 
 ## Ajouter ma page “En ce moment”
 
