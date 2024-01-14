@@ -24,4 +24,3 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./_site/
           state-name: ../.sync-state.json
-          log-level: verbose
