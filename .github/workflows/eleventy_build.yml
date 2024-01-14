@@ -8,14 +8,18 @@ jobs:
   build_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Build
+      - name: ⚙️ Checkout
+        uses: actions/checkout@master
+
+      - name: 🛠 Build
         uses: TartanLlama/actions-eleventy@master
         with:
           args: --input site
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          publish_dir: _site 
-          publish_branch: gh-pages
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: _site
