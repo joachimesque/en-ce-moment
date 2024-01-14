@@ -106,7 +106,7 @@ class NowWebring extends HTMLElement {
     let pullArray = [...Array(liste.length).keys()];
     pullArray = pullArray.filter(i => i !== currentPageIndex);
     const randomPull = pullArray[Math.floor(Math.random() * pullArray.length)];
-    const randomPage = liste[randomPull];
+    const randomPage = liste[randomPull ?? 0];
 
     let shadow = this.attachShadow({ mode: "open" });
 
