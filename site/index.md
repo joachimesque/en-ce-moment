@@ -54,8 +54,17 @@ Une fois ce fichier édité, il faut ouvrir une Pull Request, que je vérifierai
 
 ## Webring
 
-À venir.
+Comme dans les années 90 un petit bout de script JS est disponible pour les membres de la liste, il affiche sur ton site des liens vers cette page, vers les pages précédentes et suivantes de la liste, et une page au hasard.
 
-![Image marquée “Under construction” (« travaux en cours »)](assets/img/under-construction.gif)
+### Comment l’afficher ?   
 
-Comme dans les années 90, un petit bout de script JS sera disponible pour chaque membre de la liste, qui affichera des liens vers cette page, vers les pages précédentes et suivantes de la liste, et une page au hasard.
+Il faut charger sur ta page le script hébergé sur ce serveur, et poser la balise `<now-webring>` qui affichera les liens à l’aide du script. Il est possible de poser la balise de chargement du script à un autre endroit de la page (ça dépend de ce que ton CMS te propose).
+
+```html
+<script type="text/javascript" src="http://localhost:8080/script.js"></script>
+<now-webring><a href="http://localhost:8080">Découvrez le Webring “En ce moment”</a></now-webring>
+```
+
+Il n’est pas recommandé de copier le contenu du `script.js` pour l’exécuter sur la page même, mais ça peut  se faire si vous avez des soucis d’autorisation (par exemple avec les CORS). En revanche sa liste ne sera pas à jour.
+
+Ce script ne dépose pas de cookies et ne tracera pas les gens qui visitent ta page. Son code est visible à l’adresse [script.js](./script.js).
