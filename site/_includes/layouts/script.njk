@@ -14,3 +14,114 @@ const liste = [
   },
 {%- endfor %}
 ];
+
+const WEBRING_URL = "http://localhost:8080";
+
+const removeTrailingSlash = (str) => (str.replace(/\/$/, ""));
+
+const styleContent = `
+  .wrapper {
+    display: flex;
+    gap: 0.2rem 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: end;
+    font-size: 0.9rem;
+    font-family: sans-serif;
+  }
+
+  p {
+    flex: 1 0 100%;
+    margin: 0;
+    text-align: center;
+  }
+
+  a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2em;
+    color: currentColor;
+  }
+
+  a span {
+    display: inline-block;
+  }
+
+  a span:not([aria-hidden]) {
+    font-size: 0.9em;
+    font-weight: bold;
+    text-decoration: underline;
+    height: 1em;
+    line-height: 1em;
+  }
+
+  a:visited span:not([aria-hidden]) {
+    opacity: 0.9;
+  }
+
+  a span[aria-hidden] {
+    font-size: 1.6em;
+    height: 1.2em;
+    padding: 0; margin: 0;
+  }
+`
+
+const tmpl = document.createElement('template');
+tmpl.innerHTML = `<div class="wrapper">
+  <p>Cette page est dans le Webring <strong>“En ce moment”</strong></p>
+  <a rel="noopener noreferer" class="previous">
+    <span aria-hidden>◀️</span>
+    <span>Précédent</span>
+  </a>
+  <a rel="noopener noreferer" class="next">
+    <span aria-hidden>▶️</span>
+    <span>Suivant</span>
+  </a>
+  <a rel="noopener noreferer" class="random">
+    <span aria-hidden>🔀</span>
+    <span>Au hasard</span>
+  </a>
+  <a rel="noopener noreferer" class="origin">
+    <span aria-hidden>⏏️</span>
+    <span>Le Webring</span>
+  </a>
+</div>`;
+
+class NowWebring extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    const currentUrl = removeTrailingSlash(window.location.href);
+
+    const currentPageIndex = [...liste.keys()].filter(key => {
+      return removeTrailingSlash(liste[key].adresse) === currentUrl;
+    })[0];
+    const currentPage = liste[currentPageIndex];
+    const previousPage = liste[(currentPageIndex > 0 ? currentPageIndex : liste.length) - 1];
+    const nextPage = liste[currentPageIndex < liste.length - 1 ? currentPageIndex + 1 : 0];
+
+    let pullArray = [...Array(liste.length).keys()];
+    pullArray = pullArray.filter(i => i !== currentPageIndex);
+    const randomPull = pullArray[Math.floor(Math.random() * pullArray.length)];
+    const randomPage = liste[randomPull];
+
+    let shadow = this.attachShadow({ mode: "open" });
+
+    let style = document.createElement("style");
+    style.textContent = styleContent;
+
+    const content = tmpl.content.cloneNode(true);
+    content.querySelector(".previous")?.setAttribute("href", previousPage.adresse);
+    content.querySelector(".next")?.setAttribute("href", nextPage.adresse);
+    content.querySelector(".random")?.setAttribute("href", randomPage.adresse);
+    content.querySelector(".origin")?.setAttribute("href", WEBRING_URL);
+
+    shadow.appendChild(style);
+    shadow.appendChild(content);
+  }
+};
+
+customElements.define("now-webring", NowWebring);
