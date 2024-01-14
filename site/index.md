@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: true
 
 # <span aria-hidden>🕰</span> En ce moment
 
-Cette page web recense des pages “En ce moment” ou <span lang="en">“Now”</span>, à travers le web francophone.
+Cette page web recense des pages “En ce moment” (ou <span lang="en">“now pages”</span>), à travers le web francophone.
 
 Le concept de <span lang="en">“now page”</span> a été initié par <a href="https://sive.rs/nowff" rel="nofollow" hreflang="en">Derek Sivers</a> en 2015. Le concept est simple : alors qu’une page “À propos” renseigne des informations générales sur la personne qui entretient le site, la page “En ce moment” apporte des précisions sur ce qui se passe actuellement dans sa vie.
 
@@ -68,3 +68,18 @@ Il faut charger sur ta page le script hébergé sur ce serveur, et poser la bali
 Il n’est pas recommandé de copier le contenu du `script.js` pour l’exécuter sur la page même, mais ça peut  se faire si vous avez des soucis d’autorisation (par exemple avec les CORS). En revanche sa liste ne sera pas à jour.
 
 Ce script ne dépose pas de cookies et ne tracera pas les gens qui visitent ta page. Son code est visible à l’adresse [script.js](./script.js).
+
+## Affichage de la dernière mise à jour
+
+À venir.
+
+![Image marquée “Under construction” (« travaux en cours »)](assets/img/under-construction.gif)
+
+Je souhaite ajouter une fonctionnalité à la liste : afficher automagiquement la date de dernière mise à jour de chaque page.
+
+Pour ça il faut que je fasse faire une visite quotidien par un petit script, qui va lire la page, essayer de voir s’il y a des informations de date, et renseigner cette date pour chacun des lien.
+
+La détection de la date se ferait via certaines balises meta (`property="og:updated_time"`, `itemprop="dateModified"`, `property="article:modified_time"`…), ou la présence de balises `<time>` ou `<date>` avec des valeurs d’attribut `datetime` ou `date` valides. La propriété schema.org
+`dateModified` extraite d’un contenu JSON-LD est aussi une bonne source. Avec peut-être un fallback sur les infos de date de publication s’il n’y a pas de date de modification.
+
+Si tu as des idées, viens m’en parler : <a href="https://boitam.eu/@joachim">@joachim@boitam.eu</a>.
