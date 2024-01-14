@@ -1,5 +1,5 @@
 const dateOptions = {
-  dateStyle: 'long',
+  dateStyle: 'short',
   timeZone: 'Europe/Paris',
 };
 const dateFormat = (date) => new Intl.DateTimeFormat('fr-FR', dateOptions).format(date);
@@ -28,8 +28,12 @@ ${shuffled_collection.map(item => {
     <h3>${ item.data.titre }</h3>
     <p>
       <span class="adresse">${ item.data.adresse.replace(/^https?:\/\//, '') }</span>
-      <small>Ajouté le ${ dateFormat(item.date) }</small><br>
-      <small>Mis à jour le ${ dateFormat(item.data.update) }</small>
+      <small>
+        Ajouté le ${ dateFormat(item.date) }${ !!item.data.update
+          ? `, mis à jour le ${ dateFormat(item.data.update) }`
+          : ""
+        }
+      </small>
     </p>
     <span aria-hidden class="emoji">${ item.data.emoji }</span>
     <a href="${ item.data.adresse }" rel="nofollow">

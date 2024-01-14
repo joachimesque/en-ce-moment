@@ -32,7 +32,6 @@ emoji: <un emoji au choix>
 couleur: <une nuance de couleur (1)>
 adresse: <url de la page En ce moment>
 titre: <titre de la page>
-update: <date de la dernière mise à jour, au format année-mois-jour>
 ---
 ```
 
@@ -44,7 +43,6 @@ emoji: 🪴
 couleur: 200
 adresse: https://blog.professeurjoachim.com/en-ce-moment
 titre: En ce moment — le carnet de Joachim
-update: 2024-01-13
 ---
 ```
 

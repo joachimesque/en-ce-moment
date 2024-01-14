@@ -6,7 +6,11 @@ const liste = [
     adresse: "{{ post.data.adresse }}",
     titre: "{{ post.data.titre }}",
     date: {{ post.date.getTime() }},
+    {%- if post.data.update %}
     update: {{ post.data.update.getTime() }},
+    {%- else %}
+    update: 0,
+    {%- endif %}
   },
 {%- endfor %}
 ];
