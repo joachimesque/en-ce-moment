@@ -224,7 +224,7 @@ section.liste {
         opacity var(--transition);
     }
 
-    &:has(a:is(:hover, :focus, :active))::before {
+    &:has(> a:active, > a:hover, > a:focus-within)::before {
       --circle-size: 2;
 
       opacity: 1;
