@@ -1,0 +1,40 @@
+---json
+{
+  "permalink": "flux.xml",
+  "eleventyExcludeFromCollections": true,
+  "metadata": {
+    "title": "En ce moment…",
+    "subtitle": "Répertoire francophone de “now pages”, ou pages “En ce moment”",
+    "language": "fr",
+    "url": "https://encemoment.site/",
+    "author": {
+      "name": "Joachim",
+      "email": "joachim@encemoment.site"
+    }
+  }
+}
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ metadata.url }}">
+  <title>{{ metadata.title }}</title>
+  <subtitle>{{ metadata.subtitle }}</subtitle>
+  <link href="{{ permalink | absoluteUrl(metadata.url) }}" rel="self"/>
+  <link href="{{ metadata.url }}"/>
+  <updated>{{ collections.all | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>{{ metadata.url }}</id>
+  <author>
+    <name>{{ metadata.author.name }}</name>
+    <email>{{ metadata.author.email }}</email>
+  </author>
+  {%- for post in collections.all | reverse %}
+  <entry>
+    <title>{{ post.data.emoji }} {{ post.data.titre }}</title>
+    <link href="{{ post.data.adresse }}"/>
+    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <id>{{ post.data.adresse }}</id>
+    <content xml:lang="fr" type="html">
+      <a href="{{ post.data.adresse }}">{{ post.data.emoji }} {{ post.data.titre }}</a>
+    </content>
+  </entry>
+  {%- endfor %}
+</feed>

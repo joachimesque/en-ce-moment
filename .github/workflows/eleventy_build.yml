@@ -16,7 +16,8 @@ jobs:
       - name: 🛠 Build
         run: |
           git --version
-          npx @11ty/eleventy --input site
+          npm ci
+          npm run build:11ty
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4

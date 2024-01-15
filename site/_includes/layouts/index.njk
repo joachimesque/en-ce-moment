@@ -13,12 +13,15 @@
     <meta property="og:url" content="https://encemoment.site">
     <meta property="og:image" content="https://encemoment.site/assets/img/opengraph.jpg">
     <meta property="og:description" content="Un site web qui recense des pages “En ce moment” (ou “now pages”), à travers le web francophone.">
+
+    <link rel="alternate" type="application/atom+xml" title="Flux Atom En ce moment" href="https://encemoment.site/flux.xml" />
   </head>
   <body>
     <main>
       {{ content | safe }}
     </main>
     <footer>
+      Flux : <a href="https://encemoment.site/flux.xml" rel="alternate" type="application/atom+xml">Atom</a><br>
       Source : <a href="https://github.com/joachimesque/en-ce-moment">GitHub:joachimesque/en-ce-moment</a><br>
       Font : <a href="https://etceteratype.co/trispace">Trispace</a><br>
       Une production <a href="https://professeurjoachim.com">Joachimesque</a>

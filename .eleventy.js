@@ -1,3 +1,5 @@
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+
 const dateOptions = {
   dateStyle: 'short',
   timeZone: 'Europe/Paris',
@@ -7,6 +9,8 @@ const dateFormat = (date) => new Intl.DateTimeFormat('fr-FR', dateOptions).forma
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("site/assets");
   eleventyConfig.addPassthroughCopy("site/favicon.ico");
+
+  eleventyConfig.addPlugin(pluginRss);
 
   eleventyConfig.addShortcode(
     "liste",
