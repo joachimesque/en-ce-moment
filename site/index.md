@@ -76,7 +76,15 @@ now-webring::part(a) {
 }
 ```
 
-Les éléments suivants sont directement sélectionnables : `now-webring::part(wrapper)` (pour le conteneur), `now-webring::part(p)` pour le bout de texte et `now-webring::part(a)` pour les liens. Prévenez-moi si ça marche pas !
+Les éléments suivants sont directement sélectionnables :
+
+- `now-webring::part(wrapper)` (pour le conteneur)
+- `now-webring::part(p)` pour le bout de texte
+- `now-webring::part(a)` pour les liens
+- `now-webring::part(strong)`
+- `now-webring::part(span)`
+
+Prévenez-moi si ça marche pas !
 
 ## Affichage de la dernière mise à jour
 
