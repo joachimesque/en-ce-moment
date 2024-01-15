@@ -71,22 +71,25 @@ tmpl.innerHTML = `
   }
 </style>
 <div part="wrapper" class="wrapper">
-  <p part="p">Cette page est dans le Webring <strong>“En ce moment”</strong></p>
+  <p part="p">
+    Cette page est dans le Webring
+    <strong part="strong">“En ce moment”</strong>
+  </p>
   <a part="a" rel="noopener noreferer" class="previous">
-    <span aria-hidden>◀️</span>
-    <span>Précédent</span>
+    <span part="span" aria-hidden>◀️</span>
+    <span part="span">Précédent</span>
   </a>
   <a part="a" rel="noopener noreferer" class="next">
-    <span aria-hidden>▶️</span>
-    <span>Suivant</span>
+    <span part="span" aria-hidden>▶️</span>
+    <span part="span">Suivant</span>
   </a>
   <a part="a" rel="noopener noreferer" class="random">
-    <span aria-hidden>🔀</span>
-    <span>Au hasard</span>
+    <span part="span" aria-hidden>🔀</span>
+    <span part="span">Au hasard</span>
   </a>
   <a part="a" rel="noopener noreferer" class="origin">
-    <span aria-hidden>⏏️</span>
-    <span>Le Webring</span>
+    <span part="span" aria-hidden>⏏️</span>
+    <span part="span">Le Webring</span>
   </a>
 </div>`;
 
@@ -94,6 +97,7 @@ class NowWebring extends HTMLElement {
   constructor() {
     super();
   }
+
   connectedCallback() {
     const currentUrl = removeTrailingSlash(window.location.href);
 
