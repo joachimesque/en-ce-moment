@@ -19,7 +19,9 @@ const WEBRING_URL = "https://encemoment.site/";
 
 const removeTrailingSlash = (str) => (str.replace(/\/$/, ""));
 
-const styleContent = `
+const tmpl = document.createElement('template');
+tmpl.innerHTML = `
+<style type="text/css">
   .wrapper {
     margin-block: 1.5em;
     display: flex;
@@ -67,24 +69,22 @@ const styleContent = `
     height: 1.2em;
     padding: 0; margin: 0;
   }
-`
-
-const tmpl = document.createElement('template');
-tmpl.innerHTML = `<div class="wrapper">
-  <p>Cette page est dans le Webring <strong>“En ce moment”</strong></p>
-  <a rel="noopener noreferer" class="previous">
+</style>
+<div part="wrapper" class="wrapper">
+  <p part="p">Cette page est dans le Webring <strong>“En ce moment”</strong></p>
+  <a part="a" rel="noopener noreferer" class="previous">
     <span aria-hidden>◀️</span>
     <span>Précédent</span>
   </a>
-  <a rel="noopener noreferer" class="next">
+  <a part="a" rel="noopener noreferer" class="next">
     <span aria-hidden>▶️</span>
     <span>Suivant</span>
   </a>
-  <a rel="noopener noreferer" class="random">
+  <a part="a" rel="noopener noreferer" class="random">
     <span aria-hidden>🔀</span>
     <span>Au hasard</span>
   </a>
-  <a rel="noopener noreferer" class="origin">
+  <a part="a" rel="noopener noreferer" class="origin">
     <span aria-hidden>⏏️</span>
     <span>Le Webring</span>
   </a>
@@ -111,16 +111,12 @@ class NowWebring extends HTMLElement {
 
     let shadow = this.attachShadow({ mode: "open" });
 
-    let style = document.createElement("style");
-    style.textContent = styleContent;
-
     const content = tmpl.content.cloneNode(true);
     content.querySelector(".previous")?.setAttribute("href", previousPage.adresse);
     content.querySelector(".next")?.setAttribute("href", nextPage.adresse);
     content.querySelector(".random")?.setAttribute("href", randomPage.adresse);
     content.querySelector(".origin")?.setAttribute("href", WEBRING_URL);
 
-    shadow.appendChild(style);
     shadow.appendChild(content);
   }
 };
