@@ -12,9 +12,9 @@ jobs:
         uses: actions/checkout@master
 
       - name: 🛠 Build
-        uses: TartanLlama/actions-eleventy@master
-        with:
-          args: --input site
+        run: |
+          git --version
+          npx @11ty/eleventy --input=_site
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
