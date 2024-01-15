@@ -39,3 +39,13 @@ Une fois ce fichier édité, il faut ouvrir une Pull Request, que je vérifierai
 #### Notes
 
 1. La nuance de couleur se note en degrés, de `0` à `360`, en fonction de sa position sur la roue des couleurs. Pour trouver une nuance, l’outil <https://paletton.com> peut être utile (voir la valeur de `hue`).
+
+## Licence
+
+Le code est distribué sous license libre GNU AGPL.
+
+Le fichier de typographie inclus est <a href="https://github.com/Etcetera-Type-Co/Trispace">© 2020 Tyler Fink et ses contributeur·ices</a>, distribué sous licence OFL. Voir `site/assets/fonts/OFL.txt`.
+
+L’emoji utilisé pour la favicon et l’image OpenGraph est tiré de la collection Twemoji <a href="https://twemoji.twitter.com/">© 2020 Twitter, Inc et autres contributeur·ices</a>, disponible sous licence <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>. Ces deux images du projet sont partagées sous la même licence <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.
+
+Le gif `under-construction.gif` n’a pas de copyright connu. J’aime imaginer qu’il fait partie du Patrimoine universel de l’humanité et qu’une copie a sa place dans un musée de l’UNESCO.
