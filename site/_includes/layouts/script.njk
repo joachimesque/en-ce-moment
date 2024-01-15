@@ -20,37 +20,57 @@ const WEBRING_URL = "https://encemoment.site/";
 const removeTrailingSlash = (str) => (str.replace(/\/$/, ""));
 
 const styleContent = `
-  .wrapper {
+  now-webring {
     margin-block: 1.5em;
     display: flex;
-    gap: 0.2rem 1rem;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: end;
+    gap: 0.5em 1ex;
     font-size: 14px;
+    text-align: center;
     font-family: sans-serif;
   }
 
-  p {
-    flex: 1 0 100%;
-    margin: 0;
-    text-align: center;
+  now-webring a {
+    color: currentColor;
   }
 
-  a {
+  now-webring:where(.NowWebring),
+  now-webring:where(.NowWebring *) {
+    all: initial;
+  }
+
+  .NowWebring {
+    order: 2;
+    flex: 1 0 100%;
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: end;
+    font-family: sans-serif;
+  }
+
+  .NowWebring a {
     text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.2em;
     color: currentColor;
+    cursor: pointer;
   }
 
-  a span {
+  .NowWebring a:focus {
+    outline-style: auto;
+  }
+
+  .NowWebring a span {
     display: inline-block;
+    cursor: inherit;
   }
 
-  a span:not([aria-hidden]) {
+  .NowWebring a span:not([aria-hidden]) {
     font-size: 0.9em;
     font-weight: bold;
     text-decoration: underline;
@@ -58,11 +78,11 @@ const styleContent = `
     line-height: 1em;
   }
 
-  a:visited span:not([aria-hidden]) {
+  .NowWebring a:visited span:not([aria-hidden]) {
     opacity: 0.9;
   }
 
-  a span[aria-hidden] {
+  .NowWebring a span[aria-hidden] {
     font-size: 1.6em;
     height: 1.2em;
     padding: 0; margin: 0;
@@ -70,8 +90,7 @@ const styleContent = `
 `
 
 const tmpl = document.createElement('template');
-tmpl.innerHTML = `<div class="wrapper">
-  <p>Cette page est dans le Webring <strong>“En ce moment”</strong></p>
+tmpl.innerHTML = `<div class="NowWebring">
   <a rel="noopener noreferer" class="previous">
     <span aria-hidden>◀️</span>
     <span>Précédent</span>
@@ -94,6 +113,7 @@ class NowWebring extends HTMLElement {
   constructor() {
     super();
   }
+
   connectedCallback() {
     const currentUrl = removeTrailingSlash(window.location.href);
 
@@ -109,8 +129,6 @@ class NowWebring extends HTMLElement {
     const randomPull = pullArray[Math.floor(Math.random() * pullArray.length)];
     const randomPage = liste[randomPull ?? 0];
 
-    let shadow = this.attachShadow({ mode: "open" });
-
     let style = document.createElement("style");
     style.textContent = styleContent;
 
@@ -120,8 +138,8 @@ class NowWebring extends HTMLElement {
     content.querySelector(".random")?.setAttribute("href", randomPage.adresse);
     content.querySelector(".origin")?.setAttribute("href", WEBRING_URL);
 
-    shadow.appendChild(style);
-    shadow.appendChild(content);
+    this.appendChild(style);
+    this.appendChild(content);
   }
 };
 
