@@ -214,7 +214,7 @@ section.liste {
       transform: translate(-50%, -50%);
       inset-block-start: calc(var(--emoji-size) / 2);
       inset-inline-start: calc(var(--emoji-size) / 2);
-      background-image: linear-gradient(hsl(var(--hue, 0deg), 80%, 90%), hsl(var(--hue, 0deg), 60%, 70%));
+      background-image: linear-gradient(lch(90 40 var(--hue, 0deg)), lch(70 60 var(--hue, 0deg)));
       z-index: -1;
       opacity: 0.5;
       border-radius: calc(1.4 * var(--emoji-size));
