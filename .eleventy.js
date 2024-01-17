@@ -29,8 +29,10 @@ module.exports = function(eleventyConfig) {
       return `<section class="liste">
 ${collection.map(item => {
   return `
-  <article style="--hue: ${ item.data.couleur ?? '0' }deg;">
-    <h3>${ item.data.titre }</h3>
+  <article style="--hue: ${ item.data.couleur ?? '0' }deg;" ${!!item.data.lang ? `lang="${item.data.lang}"` : ''}>
+    <h3>
+      ${ item.data.titre } ${ item.data.lang == 'en' ? '<small>(in English)</small>' : ''}
+    </h3>
     <p>
       <span class="adresse">${ item.data.adresse.replace(/^https?:\/\//, '') }</span>
       <small>
@@ -41,7 +43,7 @@ ${collection.map(item => {
       </small>
     </p>
     <span aria-hidden class="emoji">${ item.data.emoji }</span>
-    <a href="${ item.data.adresse }" rel="nofollow">
+    <a href="${ item.data.adresse }" rel="nofollow" ${!!item.data.lang ? `hreflang="${item.data.lang}"` : ''}>
       <span class="sr-only">Visiter ${ item.data.adresse.replace(/^https?:\/\//, '') }</span>
     </a>
   </article>`}).join('')}
