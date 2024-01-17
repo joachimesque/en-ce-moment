@@ -6,17 +6,25 @@ const dateOptions = {
 };
 const dateFormat = (date) => new Intl.DateTimeFormat('fr-FR', dateOptions).format(date);
 
+const getLatestDate = (page) => {
+  return Math.max(page.date.getTime(), page.data.update?.getTime() ?? 0)
+}
+
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("site/assets");
   eleventyConfig.addPassthroughCopy("site/favicon.ico");
+
+  eleventyConfig.addNunjucksFilter("getLatestDate", function(page) {
+    return new Date(getLatestDate(page));
+  });
 
   eleventyConfig.addPlugin(pluginRss);
 
   eleventyConfig.addCollection("dateSortedLinks", function(collectionApi) {
     // get unsorted items
     const all = collectionApi.getAll().sort((a, b) => {
-      const aDate = Math.max(a.date.getTime(), a.data.update?.getTime() ?? 0);
-      const bDate = Math.max(b.date.getTime(), b.data.update?.getTime() ?? 0);
+      const aDate = getLatestDate(a);
+      const bDate = getLatestDate(b);
       return bDate - aDate;
     });
     return all;

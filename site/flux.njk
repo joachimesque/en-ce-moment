@@ -20,7 +20,7 @@
   <subtitle>{{ metadata.subtitle }}</subtitle>
   <link href="{{ permalink | absoluteUrl(metadata.url) }}" rel="self"/>
   <link href="{{ metadata.url }}"/>
-  <updated>{{ collections.all | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <updated>{{ collections.dateSortedLinks | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
   <id>{{ metadata.url }}</id>
   <author>
     <name>{{ metadata.author.name }}</name>
@@ -30,7 +30,7 @@
   <entry>
     <title>{{ post.data.emoji }} {{ post.data.titre }}</title>
     <link href="{{ post.data.adresse }}"/>
-    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <updated>{{ post | getLatestDate | dateToRfc3339 }}</updated>
     <id>{{ post.data.adresse }}</id>
     <content xml:lang="fr" type="html">
       <a href="{{ post.data.adresse }}">{{ post.data.emoji }} {{ post.data.titre }}</a>
