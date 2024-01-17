@@ -5,13 +5,18 @@
   "main": "index.js",
   "scripts": {
     "build:11ty": "eleventy  --input=site",
-    "serve:11ty": "eleventy  --input=site --serve"
+    "serve:11ty": "eleventy  --input=site --serve",
+    "prettier": "prettier scripts/checkUpdates.js --write"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-plugin-rss": "^1.2.0"
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "grey-matter": "^0.0.0",
+    "node-html-parser": "^6.1.12",
+    "prettier": "^3.2.4",
+    "yaml": "^2.3.4"
   }
 }
