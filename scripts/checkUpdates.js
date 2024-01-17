@@ -52,14 +52,18 @@ function getTimeFromHtml(html) {
 async function getPage(adresse) {
   return await fetch(adresse, { method: "GET" })
     .then(function (response) {
+      if (response.status != 200) {
+        throw new Error(response.status);
+      }
+
       return response.text();
     })
     .then(function (html) {
       return getTimeFromHtml(html);
     })
     .catch(function (err) {
-      // There was an error
       console.warn("Something went wrong.", err);
+      throw new Error(err);
     });
 }
 
@@ -68,7 +72,20 @@ async function updateFrontMatter(filename) {
 
   const { data: frontMatter, content } = matter(await readFile(filepath));
 
-  const update = await getPage(frontMatter.adresse);
+  let update;
+
+  try {
+    update = await getPage(frontMatter.adresse);
+  } catch ({ message }) {
+    console.warn(message);
+    frontMatter.problem = message;
+    frontMatter.problemDate = new Date(Date.now());
+
+    if (!frontMatter.problemTries) {
+      frontMatter.problemTries = 0;
+    }
+    frontMatter.problemTries += 1;
+  }
 
   let check = " ";
 
