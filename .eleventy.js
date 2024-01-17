@@ -12,6 +12,17 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPlugin(pluginRss);
 
+  eleventyConfig.addCollection("dateSortedLinks", function(collectionApi) {
+    // get unsorted items
+    const all = collectionApi.getAll().sort((a, b) => {
+      console.log(a.date.getTime(), a.data.update?.getTime(),  Math.max(a.date.getTime(), a.data.update?.getTime()))
+      const aDate = Math.max(a.date.getTime(), a.data.update?.getTime() ?? 0);
+      const bDate = Math.max(b.date.getTime(), b.data.update?.getTime() ?? 0);
+      return bDate - aDate;
+    });
+    return all;
+  });
+
   eleventyConfig.addShortcode(
     "liste",
     (collection) => {

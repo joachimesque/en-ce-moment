@@ -14,7 +14,7 @@ Comme le dit la page <a href="https://nownownow.com/about" rel="nofollow" hrefla
 
 ## Liste
 
-{% liste collections.all %}
+{% liste collections.dateSortedLinks %}
 
 ## Ajouter ma page “En ce moment”
 

@@ -26,7 +26,7 @@
     <name>{{ metadata.author.name }}</name>
     <email>{{ metadata.author.email }}</email>
   </author>
-  {%- for post in collections.all | reverse %}
+  {%- for post in collections.dateSortedLinks %}
   <entry>
     <title>{{ post.data.emoji }} {{ post.data.titre }}</title>
     <link href="{{ post.data.adresse }}"/>
