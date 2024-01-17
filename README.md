@@ -40,6 +40,26 @@ Une fois ce fichier édité, il faut ouvrir une Pull Request, que je vérifierai
 
 1. La nuance de couleur se note en degrés, de `0` à `360`, en fonction de sa position sur la roue des couleurs. Pour trouver une nuance, l’outil <https://paletton.com> peut être utile (voir la valeur de `hue`).
 
+## Affichage de la dernière mise à jour
+
+Le site met à jour automagiquement la date de dernière mise à jour de chaque page.
+
+Pour ça il fait faire une visite quotidienne par un petit script, qui va lire la page, essayer de voir s’il y a des informations de date, et renseigner cette date pour chacun des lien.
+
+La détection de la date se fait via des balises et attributs présents sur la page.   
+
+Notamment les balises meta suivantes :
+
+- `property="og:updated_time"`
+- `itemprop="dateModified"`
+- `property="article:modified_time"`
+
+Ainsi que les balises `<time>` ou `<date>` qui ont des attribut `datetime` ou `date` ayant des dates valides.
+
+Si ton site est dans la liste mais qu’il ne montre pas sa date de dernière mise à jour, il faut que tu voies avec ton CMS ou ton thème si tu peux avoir ces balises `meta`, ou `time` ou `date`.
+
+Et si ça ne fonctionne pas, n’hésite pas à ouvrir une issue.
+
 ## Licence
 
 Le code est distribué sous license libre GNU AGPL.
@@ -47,5 +67,3 @@ Le code est distribué sous license libre GNU AGPL.
 Le fichier de typographie inclus est <a href="https://github.com/Etcetera-Type-Co/Trispace">© 2020 Tyler Fink et ses contributeur·ices</a>, distribué sous licence OFL. Voir `site/assets/fonts/OFL.txt`.
 
 L’emoji utilisé pour la favicon et l’image OpenGraph est tiré de la collection Twemoji <a href="https://twemoji.twitter.com/">© 2020 Twitter, Inc et autres contributeur·ices</a>, disponible sous licence <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>. Ces deux images du projet sont partagées sous la même licence <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.
-
-Le gif `under-construction.gif` n’a pas de copyright connu. J’aime imaginer qu’il fait partie du Patrimoine universel de l’humanité et qu’une copie a sa place dans un musée de l’UNESCO.

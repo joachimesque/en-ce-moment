@@ -88,15 +88,20 @@ Prévenez-moi si ça marche pas !
 
 ## Affichage de la dernière mise à jour
 
-À venir.
+Le site met à jour automagiquement la date de dernière mise à jour de chaque page.
 
-![Image marquée “Under construction” (« travaux en cours »)](assets/img/under-construction.gif)
+Pour ça il fait faire une visite quotidienne par un petit script, qui va lire la page, essayer de voir s’il y a des informations de date, et renseigner cette date pour chacun des lien.
 
-Je souhaite ajouter une fonctionnalité à la liste : afficher automagiquement la date de dernière mise à jour de chaque page.
+La détection de la date se fait via des balises et attributs présents sur la page.   
 
-Pour ça il faut que je fasse faire une visite quotidien par un petit script, qui va lire la page, essayer de voir s’il y a des informations de date, et renseigner cette date pour chacun des lien.
+Notamment les balises meta suivantes :
 
-La détection de la date se ferait via certaines balises meta (`property="og:updated_time"`, `itemprop="dateModified"`, `property="article:modified_time"`…), ou la présence de balises `<time>` ou `<date>` avec des valeurs d’attribut `datetime` ou `date` valides. La propriété schema.org
-`dateModified` extraite d’un contenu JSON-LD est aussi une bonne source. Avec peut-être un fallback sur les infos de date de publication s’il n’y a pas de date de modification.
+- `property="og:updated_time"`
+- `itemprop="dateModified"`
+- `property="article:modified_time"`
 
-Si tu as des idées, viens m’en parler : <a href="https://boitam.eu/@joachim">@joachim@boitam.eu</a>.
+Ainsi que les balises `<time>` ou `<date>` qui ont des attribut `datetime` ou `date` ayant des dates valides.
+
+Si ton site est dans la liste mais qu’il ne montre pas sa date de dernière mise à jour, il faut que tu voies avec ton CMS ou ton thème si tu peux avoir ces balises `meta`, ou `time` ou `date`.
+
+Et si ça ne fonctionne pas, on peut en parler : <a href="https://boitam.eu/@joachim">@joachim@boitam.eu</a>.
