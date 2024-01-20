@@ -32,7 +32,7 @@
     <link href="{{ post.data.adresse }}"/>
     <updated>{{ post | getLatestDate | dateToRfc3339 }}</updated>
     <id>{{ post.data.adresse }}</id>
-    <content xml:lang="fr" type="html">
+    <content xml:lang="{{ post.data.lang | d('fr') }}" type="html">
       <a href="{{ post.data.adresse }}">{{ post.data.emoji }} {{ post.data.titre }}</a>
     </content>
   </entry>
