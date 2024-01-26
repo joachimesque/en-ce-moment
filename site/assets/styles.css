@@ -206,6 +206,8 @@ section.liste {
     padding-top: calc(var(--emoji-size) + 0.5rem);
 
     &::before {
+      --hsl-base: hsl(var(--hue, 0deg), 50%, 50%);
+
       content: "";
       display: block;
       width: calc(var(--circle-size, 1.4) * var(--emoji-size));
@@ -214,7 +216,8 @@ section.liste {
       transform: translate(-50%, -50%);
       inset-block-start: calc(var(--emoji-size) / 2);
       inset-inline-start: calc(var(--emoji-size) / 2);
-      background-image: linear-gradient(lch(90 40 var(--hue, 0deg)), lch(70 60 var(--hue, 0deg)));
+      background-image: linear-gradient(hsl(var(--hue, 0deg), 80%, 90%), hsl(var(--hue, 0deg), 60%, 70%)); /* Firefox fallback */
+      background-image: linear-gradient(oklch(from var(--hsl-base) 95% 0.05 h), oklch(from var(--hsl-base) 75% 0.15 h));
       z-index: -1;
       opacity: 0.5;
       border-radius: calc(1.4 * var(--emoji-size));
