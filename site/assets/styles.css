@@ -216,7 +216,6 @@ section.liste {
       transform: translate(-50%, -50%);
       inset-block-start: calc(var(--emoji-size) / 2);
       inset-inline-start: calc(var(--emoji-size) / 2);
-      background-image: linear-gradient(hsl(var(--hue, 0deg), 80%, 90%), hsl(var(--hue, 0deg), 60%, 70%)); /* Firefox fallback */
       background-image: linear-gradient(oklch(from var(--hsl-base) 95% 0.05 h), oklch(from var(--hsl-base) 75% 0.15 h));
       z-index: -1;
       opacity: 0.5;
@@ -266,3 +265,8 @@ section.liste {
   }
 }
 
+@-moz-document url-prefix() { 
+  section.liste article::before {
+    background-image: linear-gradient(hsl(var(--hue, 0deg), 80%, 90%), hsl(var(--hue, 0deg), 60%, 70%));
+  }
+}
