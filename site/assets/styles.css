@@ -159,14 +159,14 @@ body {
   gap: 3rem;
   margin: 0;
   padding-inline: clamp(1rem, 5vw, 3rem);
+}
 
-  main {
-    flex: 1 0 auto;
+main {
+  flex: 1 0 auto;
+}
 
-    > :not(section.liste) {
-      max-width: 90ch;
-    }
-  }
+main > :not(section.liste) {
+  max-width: 90ch;
 }
 
 footer {
@@ -188,85 +188,93 @@ pre {
 section.liste {
   margin-block: 1.5rem;
   gap: 2rem 1.5rem;
-
-  @media (width < 700px) {
+}
+@media (width < 700px) {
+  section.liste {
     display: flex;
     flex-direction: column;
   }
+}
 
-  @media (width >= 700px) {
+@media (width >= 700px) {
+  section.liste {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   }
+}
 
-  & article {
-    --emoji-size: 3rem;
+section.liste article {
+  --emoji-size: 3rem;
+  --hsl-base: hsl(var(--hue, 0deg), 50%, 50%);
 
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    justify-content: end;
-    padding-top: calc(var(--emoji-size) + 0.5rem);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: end;
+  padding-top: calc(var(--emoji-size) + 0.5rem);
 
-    &::before {
-      --hsl-base: hsl(var(--hue, 0deg), 50%, 50%);
+  &:has(> a:active, > a:hover, > a:focus-within)::before {
+    --circle-size: 2;
 
-      content: "";
-      display: block;
-      width: calc(var(--circle-size, 1.4) * var(--emoji-size));
-      height: calc(var(--circle-size, 1.4) * var(--emoji-size));
-      position: absolute;
-      transform: translate(-50%, -50%);
-      inset-block-start: calc(var(--emoji-size) / 2);
-      inset-inline-start: calc(var(--emoji-size) / 2);
-      background-image: linear-gradient(oklch(from var(--hsl-base) 95% 0.05 h), oklch(from var(--hsl-base) 75% 0.15 h));
-      z-index: -1;
-      opacity: 0.5;
-      border-radius: calc(1.4 * var(--emoji-size));
-      transition:
-        width var(--transition),
-        height var(--transition),
-        opacity var(--transition);
-    }
-
-    &:has(> a:active, > a:hover, > a:focus-within)::before {
-      --circle-size: 2;
-
-      opacity: 1;
-    }
-
-    & h3, & p {
-      margin: 0;
-    }
-
-    & a {
-      display: block;
-      position: absolute;
-      inset-block: 0;
-      inset-inline: 0;
-    }
-
-    & .adresse {
-      display: block;
-      max-width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      text-decoration: underline;
-      text-decoration-skip-ink: auto;
-    }
-
-    & .emoji {
-      display: block;
-      position: absolute;
-      inset-block-start: 0;
-      inset-inline-start: 0;
-      font-size: var(--emoji-size);
-      line-height: 1;
-      height: var(--emoji-size);
-    }
+    opacity: 1;
   }
+}
+
+section.liste article::before {
+  content: "";
+  display: block;
+  width: calc(var(--circle-size, 1.4) * var(--emoji-size));
+  height: calc(var(--circle-size, 1.4) * var(--emoji-size));
+  position: absolute;
+  transform: translate(-50%, -50%);
+  inset-block-start: calc(var(--emoji-size) / 2);
+  inset-inline-start: calc(var(--emoji-size) / 2);
+  background-image: linear-gradient(oklch(from var(--hsl-base) 95% 0.05 h), oklch(from var(--hsl-base) 75% 0.15 h));
+  z-index: -1;
+  opacity: 0.5;
+  border-radius: calc(1.4 * var(--emoji-size));
+  transition:
+    width var(--transition),
+    height var(--transition),
+    opacity var(--transition);
+}
+
+section.liste article h3, section.liste article p {
+  margin: 0;
+}
+
+section.liste article a {
+  display: block;
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  border-radius: 1.2rem;
+}
+
+section.liste article a:focus-visible {
+  outline-offset: 0.4rem;
+  outline: 2px solid var(--hsl-base);
+}
+
+section.liste article .adresse {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+}
+
+section.liste article .emoji {
+  display: block;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  font-size: var(--emoji-size);
+  line-height: 1;
+  height: var(--emoji-size);
 }
 
 @-moz-document url-prefix() { 
