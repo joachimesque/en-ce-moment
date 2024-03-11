@@ -19,6 +19,9 @@ function getTimeFromHtml(html) {
   const metaArticle = root
     .querySelector('[property="article:modified_time"]')
     ?.getAttribute("content");
+  const metaDate = root
+    .querySelector('[name="date"]')
+    ?.getAttribute("content");
 
   // There might be multiple elements containting
   // a date or datetime attribute
@@ -41,6 +44,7 @@ function getTimeFromHtml(html) {
     new Date(metaOg).getTime(),
     new Date(metaDm).getTime(),
     new Date(metaArticle).getTime(),
+    new Date(metaDate).getTime(),
     new Date(dateAttr).getTime(),
     new Date(datetimeAttr).getTime(),
   ]
