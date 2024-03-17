@@ -189,6 +189,7 @@ section.liste {
   margin-block: 1.5rem;
   gap: 2rem 1.5rem;
 }
+
 @media (width < 700px) {
   section.liste {
     display: flex;
