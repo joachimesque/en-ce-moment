@@ -56,7 +56,7 @@ tmpl.innerHTML = `
     display: inline-block;
   }
 
-  a span:not([aria-hidden]) {
+  a span:not([aria-hidden="true"]) {
     font-size: 0.9em;
     font-weight: bold;
     text-decoration: underline;
@@ -64,11 +64,11 @@ tmpl.innerHTML = `
     line-height: 1em;
   }
 
-  a:visited span:not([aria-hidden]) {
+  a:visited span:not([aria-hidden="true"]) {
     opacity: 0.9;
   }
 
-  a span[aria-hidden] {
+  a span[aria-hidden="true"] {
     font-size: 1.6em;
     height: 1.2em;
     padding: 0; margin: 0;
@@ -80,19 +80,19 @@ tmpl.innerHTML = `
     <strong part="strong">“En ce moment”</strong>
   </p>
   <a part="a" rel="noopener noreferer" class="previous">
-    <span part="span" aria-hidden>◀️</span>
+    <span part="span" aria-hidden="true">◀️</span>
     <span part="span">Précédent</span>
   </a>
   <a part="a" rel="noopener noreferer" class="next">
-    <span part="span" aria-hidden>▶️</span>
+    <span part="span" aria-hidden="true">▶️</span>
     <span part="span">Suivant</span>
   </a>
   <a part="a" rel="noopener noreferer" class="random">
-    <span part="span" aria-hidden>🔀</span>
+    <span part="span" aria-hidden="true">🔀</span>
     <span part="span">Au hasard</span>
   </a>
   <a part="a" rel="noopener noreferer" class="origin">
-    <span part="span" aria-hidden>⏏️</span>
+    <span part="span" aria-hidden="true">⏏️</span>
     <span part="span">Le Webring</span>
   </a>
 </div>`;
