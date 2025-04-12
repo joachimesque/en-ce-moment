@@ -42,7 +42,7 @@ Par exemple :
 ---
 emoji: 🪴
 couleur: 200
-adresse: https://blog.professeurjoachim.com/en-ce-moment
+adresse: https://fourbi.eu/en-ce-moment
 titre: En ce moment — le carnet de Joachim
 ---
 ```
