@@ -23,18 +23,18 @@ titre: <titre de la page>
 ---
 ```
 
-Par exemple :
+Par exemple, pour mon blog sur `fourbi.eu` le fichier s’appellera `fourbi.eu.md` :
 
-```
+```fourbi.eu.md
 ---
 emoji: 🪴
 couleur: 200
-adresse: https://blog.professeurjoachim.com/en-ce-moment
+adresse: https://fourbi.eu/en-ce-moment
 titre: En ce moment — le carnet de Joachim
 ---
 ```
 
-Une fois ce fichier édité, il faut ouvrir une Pull Request, que je vérifierai puis mergerai. Évidemment, il n’est pas permis de modifier sans permission les fichiers d’autres sites que le sien.
+Une fois ce fichier édité, il faut le sauver en sauvant l’option “ouvrir une Pull Request”, que je vérifierai puis mergerai. Évidemment, il n’est pas permis de modifier sans permission les fichiers d’autres sites que le sien.
 
 #### Notes
 
