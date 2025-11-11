@@ -27,7 +27,7 @@ jobs:
 
       - name: 📂 Create Pull Request
         run: |
-          git add site/links/*.md
+          git add -u
           gh_pr_up() { gh pr create $* || gh pr edit $* }
           gh_pr_up --title "💫 Update updated links" --fill --base "main" --head "update/patch"
         id: cpr
