@@ -21,23 +21,21 @@ jobs:
       - name: 🛠 Check
         run: |
           git --version
+          git checkout -b "update/patch"
           npm ci
           node scripts/checkUpdates.js
 
       - name: 📂 Create Pull Request
-        uses: peter-evans/create-pull-request@v7
+        run: |
+          git add site/links/*.md
+          gh_pr_up() { gh pr create $* || gh pr edit $* }
+          gh_pr_up --title "💫 Update updated links" --fill --base "main" --head "update/patch"
         id: cpr
-        with:
-          commit-message: 💫 Update updated links
-          branch: update/patch
-          base: main
-          add-paths: |
-            site/links/*.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🐚 Check outputs
-        if: ${{ steps.cpr.outputs.pull-request-number }}
-        run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+#      - name: 🐚 Check outputs
+#        if: ${{ steps.cpr.outputs.pull-request-number }}
+#        run: |
+#          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+#          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
