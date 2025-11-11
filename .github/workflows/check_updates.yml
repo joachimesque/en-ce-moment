@@ -22,18 +22,24 @@ jobs:
           npm ci
           node scripts/checkUpdates.js
 
-      - name: 📂 Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        id: cpr
+      - name: 🐚 Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit-message: 💫 Update updated links
-          branch: update/patch
-          base: main
-          add-paths: |
-            site/links/*.md
+          commit_message: 💫 Update updated links
+          file_pattern: 'site/links/*.md'
 
-      - name: 🐚 Check outputs
-        if: ${{ steps.cpr.outputs.pull-request-number }}
-        run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+#      - name: 📂 Create Pull Request
+#        uses: peter-evans/create-pull-request@v7
+#        id: cpr
+#        with:
+#          commit-message: 💫 Update updated links
+#          branch: update/patch
+#          base: main
+#          add-paths: |
+#            site/links/*.md
+
+#      - name: 🐚 Check outputs
+#        if: ${{ steps.cpr.outputs.pull-request-number }}
+#        run: |
+#          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+#          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
