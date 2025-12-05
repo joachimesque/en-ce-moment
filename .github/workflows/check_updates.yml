@@ -18,36 +18,27 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🛠 Check
+      - name: 🛠 Run check updates script
         run: |
           git --version
-          git checkout main
+          git checkout -b "update/patch"
           npm ci
           node scripts/checkUpdates.js
 
-      - name: 🚦 Check for Changes
-        id: check_changes
+      - name: 📂 Open PR
+        uses: peter-evans/create-pull-request@v7
+        id: cpr
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: '💫 Update updated links'
+          branch: update/patch
+          base: main
+          add-paths: |
+            site/links/*.md
+
+      - name: 🐚 Check outputs
+        if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
-          if [[ -n "$(git diff --exit-code)" ]]; then
-            echo "Changes detected."
-            echo "::set-output name=has_changes::true"
-          else
-            echo "No changes detected."
-            echo "::set-output name=has_changes::false"
-          fi
-
-      - name: 📂 Push to main
-        if: steps.check_changes.outputs.has_changes == 'true'
-        run: |
-          # configure user
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-
-          # stage any file changes to be committed
-          git add .
-
-          # make commit with staged changes
-          git commit -m "💫 Update updated links"
-
-          # push the commit back up to source GitHub repository
-          git push --force
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
