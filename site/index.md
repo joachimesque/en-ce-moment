@@ -104,4 +104,4 @@ Ainsi que les balises `<time>` ou `<date>` qui ont des attribut `datetime` ou `d
 
 Si ton site est dans la liste mais qu’il ne montre pas sa date de dernière mise à jour, il faut que tu voies avec ton CMS ou ton thème si tu peux avoir ces balises `meta`, ou `time` ou `date`.
 
-Et si ça ne fonctionne pas, on peut en parler : <a href="https://boitam.eu/@joachim">@joachim@boitam.eu</a> ou <a href="mailto:joachim@encemoment.site">joachim@encemoment.site</a>.
+Et si ça ne fonctionne pas, on peut en parler : <a href="https://boitam.eu/@joachim">@joachim@boitam.eu</a> ou <a href="mailto:joachim@fourbi.eu">joachim@fourbi.eu</a>.
