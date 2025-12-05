@@ -25,17 +25,29 @@ jobs:
           npm ci
           node scripts/checkUpdates.js
 
-      - name: 📂 Create Pull Request
+      - name: 🚦 Check for Changes
+        id: check_changes
         run: |
-          git add -u
-          gh_pr_up() { gh pr create $* || gh pr edit $* }
-          gh_pr_up --title "💫 Update updated links" --fill --base "main" --head "update/patch"
-        id: cpr
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          if [[ -n "$(git diff --exit-code)" ]]; then
+            echo "Changes detected."
+            echo "::set-output name=has_changes::true"
+          else
+            echo "No changes detected."
+            echo "::set-output name=has_changes::false"
+          fi
 
-#      - name: 🐚 Check outputs
-#        if: ${{ steps.cpr.outputs.pull-request-number }}
-#        run: |
-#          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-#          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+      - name: 📂 Create Pull Request
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          # configure user
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+          # stage any file changes to be committed
+          git add .
+
+          # make commit with staged changes
+          git commit -m "💫 Update updated links"
+
+          # push the commit back up to source GitHub repository
+          git push
