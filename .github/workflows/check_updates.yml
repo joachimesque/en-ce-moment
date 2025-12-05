@@ -21,7 +21,7 @@ jobs:
       - name: 🛠 Check
         run: |
           git --version
-          git checkout -b "update/patch"
+          git checkout main
           npm ci
           node scripts/checkUpdates.js
 
@@ -36,7 +36,7 @@ jobs:
             echo "::set-output name=has_changes::false"
           fi
 
-      - name: 📂 Create Pull Request
+      - name: 📂 Push to main
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
           # configure user
