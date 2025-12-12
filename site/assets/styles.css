@@ -269,13 +269,15 @@ section.liste article .adresse {
 }
 
 section.liste article .emoji {
-  display: block;
+  display: flex;
   position: absolute;
+  justify-content: center;
   inset-block-start: 0;
   inset-inline-start: 0;
   font-size: var(--emoji-size);
   line-height: 1;
   height: var(--emoji-size);
+  width: var(--emoji-size);
 }
 
 @-moz-document url-prefix() { 
