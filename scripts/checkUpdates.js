@@ -76,7 +76,7 @@ async function updateFrontMatter(filename) {
 
   const { data: frontMatter, content } = matter(await readFile(filepath));
 
-  if (!!frontmatter.ignore) return;
+  if (!!frontMatter.ignore) return;
 
   let update;
 
