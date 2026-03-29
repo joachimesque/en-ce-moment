@@ -1,10 +1,16 @@
-const { readdir, readFile, writeFile } = require("fs/promises");
-const path = require("path");
-const matter = require("gray-matter");
-const { stringify } = require("yaml");
-const HTMLParser = require("node-html-parser");
+import { readdir, readFile, writeFile } from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
+import matter from "gray-matter";
+import { stringify } from "yaml";
+import HTMLParser from "node-html-parser";
 
-const linksDir = path.join(__dirname, "..", "site", "links");
+const linksDir = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "site",
+  "links",
+);
 
 function getTimeFromHtml(html) {
   const root = HTMLParser.parse(html);
