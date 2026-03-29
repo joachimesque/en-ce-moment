@@ -6,17 +6,19 @@
   "scripts": {
     "build:11ty": "eleventy  --input=site",
     "serve:11ty": "eleventy  --input=site --serve",
-    "prettier": "prettier scripts/checkUpdates.js --write"
+    "prettier": "prettier scripts/checkUpdates.js --write",
+    "updates:check": "node scripts/checkUpdates.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "module",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-plugin-rss": "^1.2.0",
-    "grey-matter": "^0.0.0",
-    "node-html-parser": "^6.1.12",
-    "prettier": "^3.2.4",
-    "yaml": "^2.3.4"
+    "@11ty/eleventy": "^3.1.5",
+    "@11ty/eleventy-plugin-rss": "^3.0.0",
+    "gray-matter": "^4.0.3",
+    "node-html-parser": "^7.1.0",
+    "prettier": "^3.8.1",
+    "yaml": "^2.8.3"
   }
 }

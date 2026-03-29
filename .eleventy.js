@@ -1,4 +1,4 @@
-const pluginRss = require("@11ty/eleventy-plugin-rss");
+import pluginRss from "@11ty/eleventy-plugin-rss";
 
 const dateOptions = {
   dateStyle: 'short',
@@ -10,7 +10,7 @@ const getLatestDate = (page) => {
   return Math.max(page.date.getTime(), page.data.update?.getTime() ?? 0)
 }
 
-module.exports = function(eleventyConfig) {
+export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("site/assets");
   eleventyConfig.addPassthroughCopy("site/favicon.ico");
 
