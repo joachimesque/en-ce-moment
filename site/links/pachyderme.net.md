@@ -4,6 +4,6 @@ couleur: 274
 adresse: https://www.pachyderme.net/now
 titre: Aziz Paul Ctrian
 problem: "TypeError: fetch failed"
-problemDate: 2026-05-28T12:18:41.804Z
-problemTries: 8
+problemDate: 2026-06-03T13:06:34.815Z
+problemTries: 9
 ---
