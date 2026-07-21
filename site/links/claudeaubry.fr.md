@@ -3,7 +3,7 @@ emoji: ➿
 couleur: 180
 adresse: https://claudeaubry.fr/now/
 titre: Et maintenant - Scrum, Agilité & rock'n roll
-update: 2026-04-28T01:22:34.000Z
+update: 2026-07-21T04:22:34.000Z
 problem: "Error: 404"
 problemDate: 2025-06-05T09:12:54.714Z
 problemTries: 1
