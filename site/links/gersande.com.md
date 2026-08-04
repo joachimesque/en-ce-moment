@@ -5,6 +5,6 @@ adresse: https://blog.gersande.com/en-ce-moment
 titre: À c't'heure
 update: 2026-02-23T05:28:34.000Z
 problem: "TypeError: fetch failed"
-problemDate: 2026-07-29T11:13:48.967Z
-problemTries: 4
+problemDate: 2026-08-04T11:14:58.958Z
+problemTries: 5
 ---
