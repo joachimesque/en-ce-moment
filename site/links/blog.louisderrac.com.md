@@ -1,6 +1,6 @@
 ---
 emoji: 🧑🏼‍🏫
 couleur: 228
-adresse: https://louisderrac.com/en-ce-moment/
+adresse: https://blog.louisderrac.com/now/
 titre: En ce moment
 ---
